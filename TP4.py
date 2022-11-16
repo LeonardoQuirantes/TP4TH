@@ -1,11 +1,10 @@
-
 import cv2  # OpenCV
 import numpy as np
 
 def THL():
 
         #Se busca la imagen original
-        img = cv2.imread("imagen1.jpg")
+        img = cv2.imread("imagenes/imagen1.jpg")
         cv2.imshow("Original" ,img)
         cv2.waitKey(0)
 
@@ -65,7 +64,8 @@ def THL():
                 #print("valor y2: ", y2 )
 
                 #Generar  las lineas para mostrarlas en la linea original
-                print("({},{})  ({},{})".format(x1,y1, x2,y2))#un print par motrar las cordenadas que  se usaran para dibujar.
+                #un print para motrar las cordenadas que  se usaran para dibujar.
+                print("({},{})  ({},{})".format(x1,y1, x2,y2))
                 cv2.line(img , (x1,y1),(x2,y2),(0,0,255),1)
         
 
@@ -74,7 +74,7 @@ def THL():
                 cv2.waitKey(0)
 def THC():
 
-        img = cv2.imread('imagen2.jpg', cv2.IMREAD_COLOR) 
+        img = cv2.imread('imagenes/imagen2.jpg', cv2.IMREAD_COLOR) 
         cv2.imshow('Original', img)
         cv2.waitKey(0)
 
@@ -103,23 +103,25 @@ def THC():
                 cv2.circle(img, (a, b), r, (0, 255, 100), 2) 
         
         # Para ver los datos de los circulos encontrados.
-        # print("Centro ({:}, {:}), radio = {:}".format(a, b, r))
+               
+                
   
         # Dibujar un círculo pequeño alrededor del centro
                 cv2.circle(img, (a, b), 1, (0, 0, 255), 3)
 
 
 # Ir mostradndo las ciculos encontrados.
-        cv2.imshow("Detección de circunferencias", img) 
-        cv2.waitKey(0)       
+                #print("Centro ({:}, {:}), radio = {:}".format(a, b, r))
+                cv2.imshow("Detección de circunferencias", img) 
+                cv2.waitKey(0)       
 
 #Seleccion de metodo
 print("Seleccione la opcion: \n 1:Tranformada de  Hough linial \n 2:Tranformada de  Hough circular")
-op = input("Opcion: ")
+op = input("Se selecciona la opcion: ")
 match op :
         case"1":
-                ######Trnaformada de Hough Linial######
+                #Trnaformada de Hough Linial
                 THL()
         case"2":
-                ######Tranformada de Hough Cicrular######
+                #Tranformada de Hough Cicrular
                 THC()
