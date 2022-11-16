@@ -1,9 +1,9 @@
 import cv2  # OpenCV
-import numpy as np
+import numpy as np #NumPy
 
 def THL():
 
-        #Se busca la imagen original
+        #Buscamos la imagen y la gaurdamos en una variable llamada "img"
         img = cv2.imread("imagenes/imagen1.jpg")
         cv2.imshow("Original" ,img)
         cv2.waitKey(0)
@@ -73,13 +73,13 @@ def THL():
                 cv2.imshow("Resultado",img)#Se muestra  el resultado final optenido 
                 cv2.waitKey(0)
 def THC():
-
+        #Buscamos la imagen y la gaurdamos en una variable llamada "img"
         img = cv2.imread('imagenes/imagen2.jpg', cv2.IMREAD_COLOR) 
         cv2.imshow('Original', img)
         cv2.waitKey(0)
 
-################PROCESO DE FILTRADO DE IMAGEN ORIGINAL########################
-# Convertir a escala de grises
+        ################PROCESO DE FILTRADO DE IMAGEN ORIGINAL########################
+        # Convertir a escala de grises
         iGris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) 
         cv2.imshow('Gris', iGris) # grigio es en italiano, pero no se asusten, no tiene Coreanovirus
         cv2.waitKey(0)
@@ -87,7 +87,7 @@ def THC():
         iBorrosa = cv2.blur(iGris, (9, 9)) 
         cv2.imshow('Borrosa', iGris )
         cv2.waitKey(0)
-#############################################################################
+        #############################################################################
 
 # Aplicar la tranfromada de Hough para detección de círculos
         detectarCiculos = cv2.HoughCircles(iBorrosa, cv2.HOUGH_GRADIENT, 1, 20, param1 = 50, param2 = 30, minRadius =20, maxRadius = 30)   
