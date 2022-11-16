@@ -118,8 +118,8 @@ print("Seleccione la opcion: \n 1:Tranformada de  Hough linial \n 2:Tranformada 
 op = input("Opcion: ")
 match op :
         case"1":
-                #print("Trnaformada de Hough Linial")
+                ######Trnaformada de Hough Linial######
                 THL()
         case"2":
-                #print("Tranformada de Hough Cicrular")
+                ######Tranformada de Hough Cicrular######
                 THC()
