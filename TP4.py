@@ -83,8 +83,7 @@ def THC():
         iGris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) 
         cv2.imshow('Gris', iGris) # grigio es en italiano, pero no se asusten, no tiene Coreanovirus
         cv2.waitKey(0)
-
-# Ahora se aplica un filtro pasabajas de 3x3
+        
         iBorrosa = cv2.blur(iGris, (9, 9)) 
         cv2.imshow('Borrosa', iGris )
         cv2.waitKey(0)
