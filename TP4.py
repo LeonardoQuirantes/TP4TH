@@ -109,7 +109,7 @@ def THC():
                 cv2.circle(img, (a, b), 1, (0, 0, 255), 3)
 
 
-# Ir mostradndo las ciculos encontrados.
+        # Ir mostradndo las ciculos encontrados.
                 #print("Centro ({:}, {:}), radio = {:}".format(a, b, r))
                 cv2.imshow("Detección de circunferencias", img) 
                 cv2.waitKey(0)       
