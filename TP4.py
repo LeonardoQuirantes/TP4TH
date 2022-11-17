@@ -91,7 +91,7 @@ def THC():
 
         # Aplicar la tranfromada de Hough para detección de círculos
         detectarCiculos = cv2.HoughCircles(iBorrosa, cv2.HOUGH_GRADIENT, 1, 20, param1 = 50, param2 = 30, minRadius =20, maxRadius = 30)   
-        # Convertir los parámetros el círculo a, b, y r en enteros de 16 bits
+        # Convertir los parámetros el círculo a, b, y r en enteros.
         dcirculos = np.uint16(np.around(detectarCiculos)) 
   
         # Ahora si se recorren todos los círculos detectados
