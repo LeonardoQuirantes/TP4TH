@@ -4,15 +4,19 @@ import numpy as np #NumPy
 def THL():
 
         #Buscamos la imagen y la gaurdamos en una variable llamada "img"
-        img = cv2.imread("imagenes/imagen1.jpg")
+        img = cv2.imread("imagenes/motor1.jpg")
         cv2.imshow("Original" ,img)
         cv2.waitKey(0)
 
         ################PROCESO DE FILTRADO DE IMAGEN ORIGINAL#######################
+        
+        
         #Se pasa la imagen a escala de grises
         iGris = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
         cv2.imshow("Imagen en escala de grises",iGris)
         cv2.waitKey(0)
+
+
 
         #Se le aplica deteccion  de borde por Canny
         iBordes = cv2.Canny(iGris,100,200)
@@ -22,7 +26,7 @@ def THL():
 
 
         #aplicamos la funcion HoughLine de openCV
-        lineas = cv2.HoughLines ( iBordes, 1 , np.pi/180 , 150)
+        lineas = cv2.HoughLines ( iBordes, 1 , np.pi/180 , 145)
         #print(np.array(lineas))
 
         #Recorrer los resultados
@@ -74,7 +78,7 @@ def THL():
                 cv2.waitKey(0)
 def THC():
         #Buscamos la imagen y la gaurdamos en una variable llamada "img"
-        img = cv2.imread('imagenes/imagen2.jpg', cv2.IMREAD_COLOR) 
+        img = cv2.imread('imagenes/motor2.png', cv2.IMREAD_COLOR) 
         cv2.imshow('Original', img)
         cv2.waitKey(0)
 
@@ -84,13 +88,15 @@ def THC():
         cv2.imshow('Gris', iGris) # grigio es en italiano, pero no se asusten, no tiene Coreanovirus
         cv2.waitKey(0)
         
-        iBorrosa = cv2.blur(iGris, (9, 9)) 
-        cv2.imshow('Borrosa', iGris )
+        iBorrosa = cv2.blur(iGris, (10, 10)) 
+        cv2.imshow('Borrosa', iBorrosa)
         cv2.waitKey(0)
+
         #############################################################################
 
         # Aplicar la tranfromada de Hough para detección de círculos
-        detectarCiculos = cv2.HoughCircles(iBorrosa, cv2.HOUGH_GRADIENT, 1, 20, param1 = 50, param2 = 30, minRadius =20, maxRadius = 30)   
+        detectarCiculos = cv2.HoughCircles(iBorrosa, cv2.HOUGH_GRADIENT, 1, 20, param1 =30, param2 =30, minRadius =96, maxRadius = 96)   
+        #72 interior
         # Convertir los parámetros el círculo a, b, y r en enteros.
         dcirculos = np.uint16(np.around(detectarCiculos)) 
   
@@ -99,14 +105,14 @@ def THC():
                 a, b, r = pt[0], pt[1], pt[2] 
   
         # Dibujar la circunferencia
-                cv2.circle(img, (a, b), r, (0, 255, 100), 2) 
+                cv2.circle(img, (a, b), r, (0, 255, 100), 4) 
         
         # Para ver los datos de los circulos encontrados.
                
                 
   
         # Dibujar un círculo pequeño alrededor del centro
-                cv2.circle(img, (a, b), 1, (0, 0, 255), 3)
+                cv2.circle(img, (a, b), 1, (0, 0, 255), 4)
 
 
         # Ir mostradndo las ciculos encontrados.
